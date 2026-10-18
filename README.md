@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Logo de Laguna Media" width="200" />
+</p>
+
 <h1 align="center">Laguna Media</h1>
 
 <p align="center">
@@ -28,6 +32,7 @@
 ## Tabla de contenido
 
 - [Qué es Laguna Media](#qué-es-laguna-media)
+- [Capturas de pantalla](#capturas-de-pantalla)
 - [Descargas](#descargas)
 - [Instalación paso a paso](#instalación-paso-a-paso)
 - [Cómo funciona](#cómo-funciona)
@@ -61,6 +66,18 @@ Laguna Media unifica todo eso en una sola ventana:
 | **Reproducir** | Reproductor de música y de video con biblioteca local, miniaturas, carátulas y caché |
 | **Personalizar** | Tema oscuro "neon" armado desde ocho colores y una tipografía, 27 atajos reasignables |
 | **Auto-repararse** | Cuando YouTube cambia algo y las descargas dejan de funcionar, la app **actualiza su propio motor** sin reinstalar nada |
+
+---
+
+## Capturas de pantalla
+
+| Reproductor de música | Reproductor de video |
+|---|---|
+| ![Reproductor de música](screenshots/01-reproductor-musica.png) | ![Reproductor de video](screenshots/02-reproductor-video.png) |
+
+| Conversión de códec | Configuración y personalización |
+|---|---|
+| ![Conversión de códec](screenshots/03-convertir-codec.png) | ![Configuración](screenshots/04-configuracion.png) |
 
 ---
 
