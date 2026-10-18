@@ -1,0 +1,105 @@
+PROPIETARY LICENSE — ALL RIGHTS RESERVED
+Licencia Propietaria — Todos los derechos reservados
+
+Copyright (c) 2026 Jonathan Hurtado (GitHub: @JonathanDevHurtado).
+Todos los derechos reservados.
+
+---
+
+AVISO IMPORTANTE / IMPORTANT NOTICE
+
+Este repositorio distribuye ÚNICAMENTE información y binarios compilados de
+Laguna Media (AppImage, portable para Windows y APK para Android). El código
+fuente NO se distribuye y NO se concede ningún derecho sobre él.
+
+This repository distributes ONLY information and compiled binaries of Laguna
+Media (AppImage, Windows portable and Android APK). The source code is NOT
+distributed and NO rights over it are granted.
+
+---
+
+1. TITULARIDAD
+
+El software Laguna Media, incluidos su código fuente, diseño, arquitectura,
+interfaz, estructura y documentación (en adelante, "el Software"), es
+propiedad exclusiva de Jonathan Hurtado (en adelante, "el Titular") y está
+protegido por las leyes de propiedad intelectual y derechos de autor
+aplicables.
+
+2. CONCESIÓN LIMITADA DE USO
+
+Se concede al usuario final una licencia limitada, personal, no exclusiva,
+no transferible y revocable para INSTALAR Y EJECUTAR los binarios
+distribuidos por el Titular, exclusivamente para uso personal y no
+comercial.
+
+3. PROHIBICIONES
+
+Queda terminantemente PROHIBIDO, sin autorización previa y por escrito del
+Titular:
+
+  a) Copiar, distribuir, publicar, vender, alquilar, sublicenciar o
+     explotar comercialmente el Software o cualquiera de sus binarios.
+  b) Modificar, alterar, adaptar, traducir o crear obras derivadas del
+     Software.
+  c) Realizar ingeniería inversa, descompilar, desensamblar, desofuscar
+     o intentar obtener el código fuente del Software, salvo en la medida
+     mínima en que la ley aplicable lo permita de forma imperativa.
+  d) Redistribuir los binarios, total o parcialmente, bajo cualquier
+     medio (webs, repositorios, gestores de paquetes, torrentes, etc.).
+  e) Eliminar, ocultar o alterar los avisos de copyright, marca o licencia.
+  f) Usar el Software o su nombre para crear productos derivados o
+     servicios que compitan con el Titular.
+
+4. COMPONENTES DE TERCEROS
+
+El Software incorpora o utiliza componentes de terceros que se rigen por
+sus PROPIAS licencias, las cuales prevalecen sobre esta licencia y NO
+pueden ser restringidas por el Titular:
+
+  - FFmpeg — Licencia GPL (build "gpl" de BtbN/FFmpeg-Builds).
+    https://ffmpeg.org/legal.html
+    El binario de FFmpeg conserva todos los derechos que su licencia GPL
+    otorga, incluido el acceso a su código fuente correspondiente.
+
+  - PySide6 / Qt for Python — Licencia LGPL v3.
+    https://www.qt.io/licensing
+    Se permite el reemplazo o reenlazado de las bibliotecas LGPL conforme
+    a los términos de dicha licencia.
+
+  - yt-dlp — Licencia Unlicense (dominio público).
+    https://github.com/yt-dlp/yt-dlp
+
+Nada en esta licencia pretende restringir los derechos que las licencias
+de estos componentes otorgan a los usuarios.
+
+5. SIN GARANTÍA
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA
+O IMPLÍCITA, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS DE COMERCIABILIDAD,
+IDONEIDAD PARA UN FIN PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO EL TITULAR
+SERÁ RESPONSABLE DE DAÑOS DERIVADOS DEL USO O IMPOSIBILIDAD DE USO DEL
+SOFTWARE.
+
+6. TERMINACIÓN
+
+Esta licencia se extingue automáticamente si el usuario incumple cualquiera
+de sus condiciones. En tal caso, el usuario deberá cesar todo uso y
+eliminar todas las copias del Software.
+
+7. LEY APLICABLE
+
+Esta licencia se rige por las leyes del país de residencia del Titular,
+sin perjuicio de las normas imperativas de protección al consumidor que
+resulten aplicables.
+
+---
+
+Para obtener una licencia comercial, permiso de redistribución o cualquier
+otro uso, contactar al Titular:
+
+  Correo:  JonathanHurtadDev@proton.me
+  GitHub:  https://github.com/JonathanDevHurtado
+
+All rights not expressly granted are reserved by the Holder.
+Todos los derechos no concedidos expresamente quedan reservados al Titular.
