@@ -71,13 +71,19 @@ Laguna Media unifica todo eso en una sola ventana:
 
 ## Capturas de pantalla
 
+| Descargar de YouTube | Descargar de TikTok |
+|---|---|
+| ![Descarga de YouTube](screenshots/01-descargar-youtube.png) | ![Descarga de TikTok](screenshots/02-descargar-tiktok.png) |
+
 | Reproductor de música | Reproductor de video |
 |---|---|
-| ![Reproductor de música](screenshots/01-reproductor-musica.png) | ![Reproductor de video](screenshots/02-reproductor-video.png) |
+| ![Reproductor de música](screenshots/03-reproductor-musica.png) | ![Reproductor de video](screenshots/04-reproductor-video.png) |
 
 | Conversión de códec | Configuración y personalización |
 |---|---|
-| ![Conversión de códec](screenshots/03-convertir-codec.png) | ![Configuración](screenshots/04-configuracion.png) |
+| ![Conversión de códec](screenshots/05-convertir-codec.png) | ![Configuración](screenshots/06-configuracion.png) |
+
+*Capturas de la app real, con rutas de ejemplo (la biblioteca aparece vacía a propósito).*
 
 ---
 
@@ -91,8 +97,8 @@ Todos los binarios de la última versión están en
 | `LagunaMedia-x86_64.AppImage` | Linux x86_64 | glibc 2.35+ (Fedora 36+, Ubuntu 22.04+, Debian 12+) |
 | `LagunaMedia-portable-win64.zip` | Windows 10 / 11 x64 | Ninguno (portable, sin instalador) |
 | `LagunaMedia-Android-*.apk` | Android 7.0+ (API 24) | ~150 MB de espacio libre |
-| `LagunaMediaLite-x86_64.AppImage` | Linux x86_64 | Variante mínima |
-| `LagunaMediaLite-portable-win64.zip` | Windows 10 / 11 x64 | Variante mínima |
+| `LagunaMediaLite-x86_64.AppImage` | Linux x86_64 | Variante mínima ([repo propio](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)) |
+| `LagunaMediaLite-portable-win64.zip` | Windows 10 / 11 x64 | Variante mínima ([repo propio](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)) |
 | `SHA256SUMS.txt` | — | Checksums para verificar integridad |
 
 Verificar que un binario se descargó bien (Linux):
@@ -222,6 +228,9 @@ no mate la descarga si cambiás de aplicación.
 **Lite** existe para una sola cosa: bajar y convertir lo más rápido posible. No
 carga reproductores, biblioteca, miniaturas ni temas. Si sólo querés eso, Lite
 es la indicada.
+
+📦 **Laguna Media Lite tiene su propio repositorio con sus descargas:**
+[github.com/JonathanDevHurtado/LagunaMedia-Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)
 
 ---
 
