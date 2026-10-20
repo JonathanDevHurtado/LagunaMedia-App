@@ -519,7 +519,7 @@ licencias**, y esta licencia no las restringe:
 **Jonathan Hurtado**
 
 - GitHub: [@JonathanDevHurtado](https://github.com/JonathanDevHurtado)
-- Correo: [JonathanHurtadDev@proton.me](mailto:JonathanHurtadDev@proton.me)
+- Correo: [JonathanHurtadoDev@proton.me](mailto:JonathanHurtadoDev@proton.me)
 
 En el perfil de GitHub están publicados los demás repositorios del autor.
 
