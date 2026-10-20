@@ -9,6 +9,19 @@ el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
 ## [3.0.2] — 2026-10-20
 
+### Corregido (Escritorio, Linux)
+- **La app se cerraba al escribir o pegar un texto en cualquier campo de
+  Linux.** El AppImage empaquetaba su propia copia de `libxkbcommon.so.0`
+  mientras que el plugin `xcb` de Qt usaba la `libxkbcommon-x11` del sistema;
+  esa mezcla provocaba `SIGSEGV` con la primera tecla (por ejemplo, al pegar
+  una URL). Ahora esa biblioteca la provee el sistema, que ya la tiene en
+  cualquier escritorio Linux, y se puede escribir y pegar con normalidad.
+- **Descargas con `CERTIFICATE_VERIFY_FAILED` en el AppImage publicado**: el
+  binario compilado en Ubuntu no cargaba las CA del sistema en Fedora. Ahora
+  usa el bundle de `certifi` incluido en el propio binario.
+- Se agregó al CI una comprobación que falla si un AppImage vuelve a
+  empaquetar `libxkbcommon`.
+
 ### Corregido (Android)
 - **Errores de descarga sin explicación**: la tarjeta mostraba la última línea
   de la salida del motor (casi siempre un *warning*) y a veces quedaba vacía.

@@ -367,6 +367,7 @@ otra red.
 | El video baja sin audio o sin video | El formato elegido no existe en ese video | Usá *Mejor calidad disponible* |
 | AppImage: `GLIBC_2.xx not found` | Sistema más viejo que glibc 2.35 | Actualizá la distro o usá Lite (Flatpak) |
 | AppImage no abre y no muestra nada | Falta FUSE | `--appimage-extract-and-run` |
+| Se cierra al escribir o pegar un link (Linux) | Bug de 3.0.1 con `libxkbcommon` | Actualizá a **3.0.2** |
 | Windows lo marca como desconocido | Binario sin firma comercial | Verificá el SHA-256 y ejecutá igual |
 | Android no instala el APK | Orígenes desconocidos desactivado | Permitilo para el explorador/navegador |
 | Android: la descarga se corta al cambiar de app | Servicio en primer plano detenido por el fabricante | Desactivá la optimización de batería para Laguna Media |
@@ -474,6 +475,14 @@ Ver el [Aviso legal](#aviso-legal). Es tu responsabilidad.
 
 ## Cambios de la versión 3.0.2
 
+- **Corregido (Escritorio, Linux)**: la app se cerraba al escribir o pegar un
+  texto (por ejemplo, un link) por una incompatibilidad de `libxkbcommon` entre
+  el AppImage y el sistema. Ya está resuelto: se puede escribir y pegar con
+  normalidad.
+- **Corregido (Escritorio, Linux)**: las descargas fallaban con
+  `CERTIFICATE_VERIFY_FAILED` porque el binario compilado en Ubuntu no
+  encontraba los certificados del sistema en Fedora. Ahora usa su propio
+  bundle de CA (`certifi`).
 - **Corregido (Android)**: los errores de descarga ahora muestran el motivo real
   (video privado o eliminado, bloqueo por región de TikTok, link inválido,
   404) en lugar de una línea vacía o un *warning*.
