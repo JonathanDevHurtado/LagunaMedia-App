@@ -382,6 +382,17 @@ Por ahora no. Se distribuye como APK directo desde Releases.
 
 ---
 
+## Cambios de la versión 3.0.1
+
+- **Corregido (escritorio)**: la app se cerraba sola al abrir. La ventana se
+  creaba dentro de un callback y Python la recolectaba; ahora se mantiene viva
+  hasta que la cerrás.
+- **Corregido (Android)**: las descargas fallaban porque el motor incluido
+  (yt-dlp) se congela al compilar y YouTube lo bloqueaba. Ahora la app actualiza
+  el motor sola antes de descargar (y reintenta si hace falta).
+
+---
+
 ## Licencia y componentes de terceros
 
 Laguna Media es **software propietario**. El código fuente no se distribuye y
