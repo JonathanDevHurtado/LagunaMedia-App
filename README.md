@@ -96,9 +96,10 @@ Todos los binarios de la última versión están en
 |---|---|---|
 | `LagunaMedia-x86_64.AppImage` | Linux x86_64 | glibc 2.35+ (Fedora 36+, Ubuntu 22.04+, Debian 12+) |
 | `LagunaMedia-portable-win64.zip` | Windows 10 / 11 x64 | Ninguno (portable, sin instalador) |
-| `LagunaMedia-Android-*.apk` | Android 7.0+ (API 24) | ~150 MB de espacio libre |
-| `LagunaMediaLite-x86_64.AppImage` | Linux x86_64 | Variante mínima ([repo propio](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)) |
-| `LagunaMediaLite-portable-win64.zip` | Windows 10 / 11 x64 | Variante mínima ([repo propio](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)) |
+| `LagunaMedia-Android.apk` | Android 8.0+ (arm64) | ~250 MB de espacio libre |
+
+¿Buscás la versión liviana? Está en su propio repo:
+**[Laguna Media Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)**.
 | `SHA256SUMS.txt` | — | Checksums para verificar integridad |
 
 Verificar que un binario se descargó bien (Linux):
