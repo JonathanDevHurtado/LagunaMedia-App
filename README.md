@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="../../releases/latest"><img src="https://img.shields.io/badge/⬇%20Descargar-última%20versión-yellow.svg" alt="Descargar la última versión" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Historial-3.0.4-informational.svg" alt="Historial de cambios" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Historial-3.0.5-informational.svg" alt="Historial de cambios" /></a>
 </p>
 
 ---
@@ -47,7 +47,7 @@
 - [Preguntas frecuentes](#preguntas-frecuentes)
 - [Privacidad y transparencia](#privacidad-y-transparencia)
 - [Control de calidad](#control-de-calidad)
-- [Cambios de la versión 3.0.4](#cambios-de-la-versión-304)
+- [Cambios de la versión 3.0.5](#cambios-de-la-versión-305)
 - [Licencia](#licencia)
 - [Autor](#autor)
 - [Aviso legal](#aviso-legal)
@@ -100,13 +100,13 @@ Todos los binarios de la última versión están en
 |---|---|---|
 | [`LagunaMedia-x86_64.AppImage`](../../releases/latest/download/LagunaMedia-x86_64.AppImage) | Linux x86_64 | glibc 2.35+ (Fedora 36+, Ubuntu 22.04+, Debian 12+) |
 | [`LagunaMedia-portable-win64.zip`](../../releases/latest/download/LagunaMedia-portable-win64.zip) | Windows 10 / 11 x64 | Ninguno (portable, sin instalador) |
-| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24); APK 3.0.3 | ~212 MB de espacio libre |
+| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24); APK 3.0.4 | ~222 MB de espacio libre |
 | [`SHA256SUMS.txt`](../../releases/latest/download/SHA256SUMS.txt) | — | Huellas SHA-256 para verificar la descarga |
 
 El APK está **firmado con la clave de release** (no es un build de debug), así
 que las actualizaciones se instalan encima de la versión anterior, y soporta
 páginas de memoria de **16 KB**, el requisito de los Android más nuevos.
-**Android no cambió en 3.0.4**: el APK sigue siendo 3.0.3 y es el mismo archivo
+**Android 3.0.4** incluye yt-dlp `2026.10.21` y es el mismo archivo
 (mismo SHA-256) que publica Laguna Media Lite.
 
 **Verificar la descarga** (Linux):
@@ -154,8 +154,9 @@ SHA-256 antes de ejecutarlo.
    explorador de archivos.
 2. Cuando Android lo pida, permití **instalar apps de orígenes desconocidos**
    para esa app (explorador o navegador).
-3. La primera vez, Laguna Media prepara su motor (descomprime Python, yt-dlp,
-   FFmpeg y aria2c): puede tardar unos segundos. Después arranca al instante.
+3. La primera vez, la app copia el motor yt-dlp incluido en el APK
+   (`2026.10.21`) y prepara FFmpeg/aria2c: puede tardar unos segundos. Después
+   arranca al instante.
 
 También podés instalarlo por cable:
 
@@ -188,7 +189,8 @@ adb install -r LagunaMedia-Android.apk
 3. **Reproductor / Video**: elegí tu carpeta de música o de videos una sola vez
    y la biblioteca queda indexada (escaneo en segundo plano + caché).
 4. **Configuración**: tema, atajos, carpeta de la biblioteca y **motor de
-   descargas** (el botón que arregla las descargas cuando YouTube cambia).
+   descargas**. Si hay una actualización opcional, aparece un punto rojo; el
+   botón sólo se usa cuando vos querés aplicarla.
 
 ### Android
 
@@ -198,7 +200,8 @@ adb install -r LagunaMedia-Android.apk
 2. Elegí **video** (con calidad) o **sólo audio** (MP3, Opus, M4A, FLAC, WAV) y
    dónde guardar.
 3. **Convertir**: elegí archivos del teléfono y el formato de salida.
-4. Si algo no descarga, tocá **Actualizar motor** en la pantalla de descarga.
+4. Si hay un punto rojo en **Motor**, podés aplicar la actualización
+   opcional. La app no descarga ni actualiza el motor sola.
 
 ---
 
@@ -262,7 +265,7 @@ sistema de actualización que mantiene todo funcionando con el tiempo.
                  sistema (MediaStore) o carpeta SAF
 ```
 
-### El motor: yt-dlp, y por qué se actualiza solo
+### El motor: yt-dlp, incluido y actualizable cuando vos querés
 
 La descarga la hace **[yt-dlp](https://github.com/yt-dlp/yt-dlp)**, el
 descargador de código abierto más mantenido que existe. El problema clásico de
@@ -273,12 +276,17 @@ nueva.
 
 Laguna Media rompe esa dependencia:
 
-- **Escritorio**: el botón *Actualizar motor* baja la última versión oficial y la
-  usa al instante, sin reinstalar.
-- **Android**: además de ese botón, la app **se auto-repara**: antes de
-  descargar, si el motor incluido tiene **45 días o más**, lo actualiza sola; y
-  si una descarga falla por un cambio de YouTube, lo actualiza y **reintenta una
-  vez** automáticamente.
+- **Todos los binarios incluyen yt-dlp `2026.10.21`**: la app descarga desde el
+  primer arranque, sin pulsar "Actualizar motor" ni configurar nada.
+- **Actualización opcional**: el chequeo de versión corre en segundo plano como
+  máximo una vez cada 24 h. Si hay una versión nueva, aparece un **punto rojo**
+  en Configuración (escritorio) o en la tarjeta Motor (Android). No se descarga
+  ni se instala nada hasta que el usuario lo pide.
+- **Sin acumulación**: si la copia del usuario es más nueva, se usa; si es
+  vieja o está dañada, se descarta. Así no queda una versión obsoleta tapando
+  el motor incluido.
+- **Escritorio**: Configuración → **Motor de descargas** → *Actualizar motor*.
+- **Android**: tarjeta **Motor** → *Actualizar motor*.
 
 ### La conversión: FFmpeg con progreso real
 
@@ -345,10 +353,11 @@ sólo querés eso, Lite es la indicada.
 YouTube cambió y el motor incluido quedó viejo (el binario se congela el día que
 se compila). Solución:
 
-- **Escritorio**: Configuración → **Motor de descargas** → *Actualizar motor*.
-- **Android**: en la pantalla de descarga, **Actualizar motor**. En la 3.0.2 la
-  app ya lo hace sola si el motor tiene 45 días o más, y también reintenta si
-  detecta este tipo de error.
+- **Escritorio**: si hay un punto rojo en **Configuración → Motor de
+  descargas**, aplicá la actualización opcional.
+- **Android**: si hay un punto rojo en la tarjeta **Motor**, aplicá la
+  actualización opcional. La app ya no actualiza el motor sola ni reintenta a
+  ciegas.
 
 **2. El AppImage no abre en Fedora 41+ / Ubuntu 24.04+**
 
@@ -370,7 +379,7 @@ otra red.
 
 | Síntoma | Causa | Solución |
 |---|---|---|
-| `unable to extract` / deja de descargar | Motor (yt-dlp) viejo | **Actualizar motor** |
+| `unable to extract` / deja de descargar | Motor viejo o actualización disponible | Aplicá la actualización opcional si hay punto rojo |
 | `IP address is blocked` (TikTok) | El post está bloqueado por región | Probá otro video u otra conexión |
 | "Ese link no es de YouTube / TikTok" | Plataforma equivocada o URL incompleta | Cambiá la plataforma o copiá el link del video |
 | El video baja sin audio o sin video | El formato elegido no existe en ese video | Usá *Mejor calidad disponible* |
@@ -394,7 +403,7 @@ interesantes, y cada rotura dejó una lección. Todo esto está arreglado.
 | Síntoma | Causa real | Solución |
 |---|---|---|
 | **La app no abría en escritorio** (la ventana aparecía y desaparecía) | La ventana se creaba dentro del callback de un `QTimer` en una variable local: al terminar la función, Python la recolectaba y Qt cerraba la última ventana | `MainWindow` se crea de forma síncrona en `main()` y vive hasta que cerrás la app |
-| **Android fallaba al descargar** aunque la app estuviera recién instalada | La detección de antigüedad del motor nunca funcionaba: `LocalDate.parse("2025.11.12")` falla porque yt-dlp versiona con **puntos** y no con guiones. El motor nunca se actualizaba y YouTube lo rechazaba (SABR) | Se parsea `aaaa.mm.dd` a mano; el motor se actualiza solo cada 45 días y se reintenta una vez tras un fallo típico de YouTube |
+| **Android fallaba al descargar** aunque la app estuviera recién instalada | La detección de antigüedad del motor nunca funcionaba: `LocalDate.parse("2025.11.12")` falla porque yt-dlp versiona con **puntos** y no con guiones. El motor nunca se actualizaba y YouTube lo rechazaba (SABR) | Se parsea `aaaa.mm.dd` a mano; en 3.0.1 el motor se actualizaba solo cada 45 días y se reintentaba una vez tras un fallo típico de YouTube |
 | **Links con `HTTPS://` en mayúsculas eran rechazados** | El teclado del teléfono escribe el esquema en mayúsculas y la normalización comparaba en minúsculas de forma sensible | El esquema se compara sin distinguir mayúsculas |
 | **El error de una descarga no decía nada** | Se mostraba la última línea de la salida del motor, que suele ser un *warning*, y a veces quedaba vacía | Se prefiere la línea `ERROR:` y se traducen los casos frecuentes (video privado, bloqueo por región, 404) |
 | **YouTube y TikTok dejaron de descargar** | Dos cosas a la vez: se usaba una opción que yt-dlp había descontinuado (`hls_prefer_native`) y la copia empaquetada del motor había quedado vieja | Se eliminó la opción obsoleta y se agregó el **actualizador del motor en la app** |
@@ -416,9 +425,9 @@ diseño salieron de ahí.
 ## Preguntas frecuentes
 
 **YouTube dejó de descargar, ¿se rompió?**
-No. YouTube cambia seguido. Usá **Actualizar motor** (escritorio: Configuración;
-Android: pantalla de descarga). En Android, además, la app lo hace sola si el
-motor tiene más de 45 días.
+No. YouTube cambia seguido. Si hay un punto rojo en Configuración
+(escritorio) o en Motor (Android), aplicá la actualización opcional. La app
+consulta como máximo una vez cada 24 h y nunca descarga el motor sola.
 
 **¿Necesito cookies o iniciar sesión?**
 No. Ninguna versión usa cookies: la app funciona sin configurar nada y sin
@@ -439,7 +448,7 @@ Puede ser FUSE o la versión de glibc. Probá
 `./LagunaMedia-x86_64.AppImage --appimage-extract-and-run`. Si el problema es
 glibc, tu distribución es más vieja que Ubuntu 22.04.
 
-**¿Por qué el APK pesa ~240 MB?**
+**¿Por qué el APK pesa ~222 MB?**
 Porque incluye Python, yt-dlp, FFmpeg y aria2c compilados para las cuatro
 arquitecturas de Android (arm64, armv7, x86, x86_64), para que funcione en
 cualquier teléfono sin dependencias externas.
@@ -457,12 +466,12 @@ Ver el [Aviso legal](#aviso-legal). Es tu responsabilidad.
 | Pregunta | Respuesta |
 |---|---|
 | ¿La app envía estadísticas de uso? | No. |
-| ¿A qué servidores se conecta? | Sólo a YouTube/TikTok (para lo que le pedís) y a GitHub (para actualizar el motor, cuando corresponde). |
+| ¿A qué servidores se conecta? | Sólo a YouTube/TikTok (para lo que le pedís) y a GitHub (para consultar si hay una actualización del motor y, si la aplicás, descargarla). |
 | ¿Dónde guarda la configuración? | En tu equipo: `~/.config/LagunaMedia/` (Linux), `%APPDATA%` (Windows) o los datos privados de la app (Android). |
 | ¿Dónde guarda archivos temporales? | En la caché del sistema, y los borra al terminar cada tarea. |
 | ¿Necesita mis contraseñas? | No. |
 | ¿Requiere cuenta? | No. |
-| ¿Hay comprobación automática de versiones? | No. |
+| ¿Hay comprobación automática de versiones? | Sí, como máximo una vez cada 24 h. Sólo consulta la última versión de yt-dlp y muestra un aviso; no descarga ni instala nada sin que lo pidas. |
 
 ---
 
@@ -471,8 +480,9 @@ Ver el [Aviso legal](#aviso-legal). Es tu responsabilidad.
 - **Pipeline automático (CI)**: cada cambio compila los binarios de Linux,
   Windows y Android en máquinas limpias. Si algo no compila, no se publica.
 - **Pruebas en dispositivo real**: las versiones de Android se prueban en un
-  teléfono físico (instalación limpia, descarga de YouTube y TikTok y
-  actualización del motor) antes de publicarse.
+  teléfono físico (instalación limpia, motor incluido y descarga real de
+  YouTube) antes de publicarse. El aviso de actualización se prueba con una
+  prueba instrumentada.
 - **Checksums**: cada Release incluye `SHA256SUMS.txt` para comprobar que el
   archivo descargado es exactamente el que se publicó.
 - **Versionado semántico**: `MAJOR.MINOR.PATCH`, con historial de cambios
@@ -481,18 +491,22 @@ Ver el [Aviso legal](#aviso-legal). Es tu responsabilidad.
 
 ---
 
-## Cambios de la versión 3.0.4
+## Cambios de la versión 3.0.5
 
-- **Escritorio: se quitó el selector de cookies del navegador.** La app
-  completa ya no lee cookies ni pide configuración extra; queda igual que Lite
-  y Android, que nunca las tuvieron. Los videos que exigen sesión (privados o
-  con restricción de edad) ya no se pueden descargar.
-- **Android no cambia**: sigue en 3.0.3 (versionCode 30003). El APK de este
-  Release es el mismo archivo (mismo SHA-256) que publica
-  [Laguna Media Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite),
-  así que no hace falta actualizarlo.
-- El aviso de "YouTube pidió verificación" ahora sugiere actualizar el motor,
-  sin mencionar cookies.
+- **El motor ya viene incluido y funciona de fábrica.** El AppImage, el
+  portable de Windows y el APK traen **yt-dlp 2026.10.21**; no hace falta
+  pulsar "Actualizar motor" en el primer arranque.
+- **La actualización es opcional.** Si hay una versión nueva, aparece un punto
+  rojo en Configuración (escritorio) o en Motor (Android). La app consulta como
+  máximo una vez cada 24 h y no descarga nada hasta que lo pidas.
+- **Se acabaron las copias viejas.** Al arrancar se compara el motor incluido
+  con la copia del usuario: gana la más nueva y la obsoleta se elimina. Una
+  actualización interrumpida se recupera sin dejar temporales.
+- **Android 3.0.4** deja de actualizar el motor automáticamente durante las
+  descargas y ya no reintenta a ciegas. Sigue siendo el mismo APK que publica
+  [Laguna Media Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite).
+- **Lite 1.0.4** aplica el mismo criterio y conserva su alcance mínimo:
+  descargar y convertir.
 
 ---
 

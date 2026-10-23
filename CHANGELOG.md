@@ -7,6 +7,47 @@ el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
 ---
 
+## [3.0.5] — 2026-10-23
+
+Motor incluido y actualización opcional: la app completa, Lite y Android
+funcionan de fábrica, sin exigir "Actualizar motor" ni descargar versiones
+automáticamente. El APK sigue siendo 3.0.4 y Lite 1.0.4.
+
+### Corregido
+- **El motor actualizado del usuario se ignoraba hasta reiniciar**: se
+  importaba el `yt-dlp` empaquetado antes de activar la copia del usuario y
+  `sys.modules` conservaba la versión vieja. Ahora se elige el motor antes del
+  primer import.
+- **Una copia vieja del usuario tapaba el motor incluido** en escritorio y
+  Flatpak (por ejemplo, `2026.08.19` frente a `2026.10.21`). Ahora se comparan
+  las dos versiones, gana la más nueva y la copia obsoleta se elimina. Si la
+  copia del usuario es más nueva se respeta; si está dañada, se descarta.
+- **Cada pulsación de "Actualizar motor" volvía a descargar 3 MB** aunque ya
+  estuvieras al día. Ahora se consulta la última release y sólo se descarga si
+  hay una versión realmente nueva.
+- Se limpian `yt_dlp.old`, temporales y cachés viejas; una actualización
+  interrumpida se recupera al arrancar.
+
+### Agregado
+- **yt-dlp `2026.10.21` incluido** en el AppImage, el portable de Windows y el
+  APK. Android copia el zipapp oficial desde `assets/` antes de inicializar el
+  SDK, porque el AAR de `youtubedl-android` traía `2025.11.12`.
+- **Aviso opcional con punto rojo** en Configuración (escritorio) y en la
+  tarjeta **Motor** (Android) cuando hay una versión nueva. El chequeo corre
+  en segundo plano, con caché de 24 h, y nunca descarga ni bloquea la app.
+- **Android 3.0.4**: las descargas ya no actualizan el motor automáticamente
+  ni reintentan a ciegas; si el motor falla, se muestra el aviso y el usuario
+  decide cuándo actualizar.
+- **Lite 1.0.4** usa el mismo criterio de selección, limpieza y aviso.
+
+### Notas
+- Este Release publica el AppImage de escritorio, el portable de Windows, el
+  APK y los dos binarios de Lite. El APK es el mismo en Laguna Media y Lite.
+- Android queda en **3.0.4** (versionCode 30004) y Lite en **1.0.4**; el tag de
+  este Release es `v3.0.5`.
+
+---
+
 ## [3.0.4] — 2026-10-22
 
 Versión de escritorio: se quita el selector de cookies para que las tres
