@@ -100,7 +100,7 @@ Todos los binarios de la última versión están en
 |---|---|---|
 | [`LagunaMedia-x86_64.AppImage`](../../releases/latest/download/LagunaMedia-x86_64.AppImage) | Linux x86_64 | glibc 2.35+ (Fedora 36+, Ubuntu 22.04+, Debian 12+) |
 | [`LagunaMedia-portable-win64.zip`](../../releases/latest/download/LagunaMedia-portable-win64.zip) | Windows 10 / 11 x64 | Ninguno (portable, sin instalador) |
-| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24); APK 3.0.4 | ~222 MB de espacio libre |
+| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24); APK 3.0.4 | ~215 MB de espacio libre |
 | [`SHA256SUMS.txt`](../../releases/latest/download/SHA256SUMS.txt) | — | Huellas SHA-256 para verificar la descarga |
 
 El APK está **firmado con la clave de release** (no es un build de debug), así
@@ -167,7 +167,7 @@ adb install -r LagunaMedia-Android.apk
 **Notas de Android**
 
 - Es un APK **universal**: incluye `arm64-v8a`, `armeabi-v7a`, `x86` y `x86_64`,
-  por eso pesa ~212 MB.
+  por eso pesa ~215 MB.
 - Funciona desde **Android 7.0 (API 24)** hasta Android 16, con páginas de
   memoria de 16 KB y `targetSdk 35`.
 - Está firmado con una clave de release estable: a partir de la 3.0.3 las
@@ -448,7 +448,7 @@ Puede ser FUSE o la versión de glibc. Probá
 `./LagunaMedia-x86_64.AppImage --appimage-extract-and-run`. Si el problema es
 glibc, tu distribución es más vieja que Ubuntu 22.04.
 
-**¿Por qué el APK pesa ~222 MB?**
+**¿Por qué el APK pesa ~215 MB?**
 Porque incluye Python, yt-dlp, FFmpeg y aria2c compilados para las cuatro
 arquitecturas de Android (arm64, armv7, x86, x86_64), para que funcione en
 cualquier teléfono sin dependencias externas.
