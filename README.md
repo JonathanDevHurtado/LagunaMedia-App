@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="../../releases/latest"><img src="https://img.shields.io/badge/⬇%20Descargar-última%20versión-yellow.svg" alt="Descargar la última versión" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Historial-3.0.3-informational.svg" alt="Historial de cambios" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Historial-3.0.4-informational.svg" alt="Historial de cambios" /></a>
 </p>
 
 ---
@@ -47,7 +47,7 @@
 - [Preguntas frecuentes](#preguntas-frecuentes)
 - [Privacidad y transparencia](#privacidad-y-transparencia)
 - [Control de calidad](#control-de-calidad)
-- [Cambios de la versión 3.0.3](#cambios-de-la-versión-303)
+- [Cambios de la versión 3.0.4](#cambios-de-la-versión-304)
 - [Licencia](#licencia)
 - [Autor](#autor)
 - [Aviso legal](#aviso-legal)
@@ -100,12 +100,14 @@ Todos los binarios de la última versión están en
 |---|---|---|
 | [`LagunaMedia-x86_64.AppImage`](../../releases/latest/download/LagunaMedia-x86_64.AppImage) | Linux x86_64 | glibc 2.35+ (Fedora 36+, Ubuntu 22.04+, Debian 12+) |
 | [`LagunaMedia-portable-win64.zip`](../../releases/latest/download/LagunaMedia-portable-win64.zip) | Windows 10 / 11 x64 | Ninguno (portable, sin instalador) |
-| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24), cualquier arquitectura | ~212 MB de espacio libre |
+| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24); APK 3.0.3 | ~212 MB de espacio libre |
 | [`SHA256SUMS.txt`](../../releases/latest/download/SHA256SUMS.txt) | — | Huellas SHA-256 para verificar la descarga |
 
 El APK está **firmado con la clave de release** (no es un build de debug), así
 que las actualizaciones se instalan encima de la versión anterior, y soporta
 páginas de memoria de **16 KB**, el requisito de los Android más nuevos.
+**Android no cambió en 3.0.4**: el APK sigue siendo 3.0.3 y es el mismo archivo
+(mismo SHA-256) que publica Laguna Media Lite.
 
 **Verificar la descarga** (Linux):
 
@@ -419,10 +421,9 @@ Android: pantalla de descarga). En Android, además, la app lo hace sola si el
 motor tiene más de 45 días.
 
 **¿Necesito cookies o iniciar sesión?**
-En **Android no**: la opción de cookies se eliminó y la app funciona sin
-configurar nada. En **escritorio** sigue disponible como opción avanzada
-(elegís un navegador y la app lee sus cookies localmente) para contenido que
-pide sesión; si no la usás, no hace falta tocar nada.
+No. Ninguna versión usa cookies: la app funciona sin configurar nada y sin
+pedir acceso a tu navegador. La contracara es que los videos privados o con
+restricción de edad que exigen sesión no se pueden descargar.
 
 **TikTok no descarga.**
 La causa más común es que TikTok bloquea ese video para tu conexión
@@ -477,6 +478,21 @@ Ver el [Aviso legal](#aviso-legal). Es tu responsabilidad.
 - **Versionado semántico**: `MAJOR.MINOR.PATCH`, con historial de cambios
   documentado versión por versión.
 - **Sin telemetría ni rastreo**: nada que auditar.
+
+---
+
+## Cambios de la versión 3.0.4
+
+- **Escritorio: se quitó el selector de cookies del navegador.** La app
+  completa ya no lee cookies ni pide configuración extra; queda igual que Lite
+  y Android, que nunca las tuvieron. Los videos que exigen sesión (privados o
+  con restricción de edad) ya no se pueden descargar.
+- **Android no cambia**: sigue en 3.0.3 (versionCode 30003). El APK de este
+  Release es el mismo archivo (mismo SHA-256) que publica
+  [Laguna Media Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite),
+  así que no hace falta actualizarlo.
+- El aviso de "YouTube pidió verificación" ahora sugiere actualizar el motor,
+  sin mencionar cookies.
 
 ---
 

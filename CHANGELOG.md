@@ -7,6 +7,27 @@ el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
 ---
 
+## [3.0.4] — 2026-10-22
+
+Versión de escritorio: se quita el selector de cookies para que las tres
+versiones funcionen igual, sin configuración previa. Android no cambia.
+
+### Cambiado
+- **Se quitó la opción "Cookies del navegador"** de la app completa de
+  escritorio: ya no aparece en la interfaz ni se leen cookies del navegador.
+  Lite y Android nunca las tuvieron, así que las tres versiones descargan sin
+  configuración extra.
+- El aviso cuando YouTube pide verificación ahora sugiere actualizar el motor.
+
+### Notas
+- **Android no cambió**: sigue en 3.0.3 (versionCode 30003). El APK de este
+  Release es el mismo archivo (mismo SHA-256) que el de la versión anterior y
+  que el de Laguna Media Lite.
+- Videos privados o con restricción de edad que exigen iniciar sesión ya no se
+  pueden descargar: es el costo de no usar cookies.
+
+---
+
 ## [3.0.3] — 2026-10-21
 
 ### Corregido (Android)
