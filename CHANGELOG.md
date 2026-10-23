@@ -7,6 +7,35 @@ el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
 ---
 
+## [3.0.3] — 2026-10-21
+
+### Corregido (Android)
+- **El APK publicado era un build de debug**: paquete
+  `com.lagunamedia.app.debug`, `versionName` terminada en `-debug` y firma de
+  debug (distinta en cada compilación). Eso impedía actualizar la app sin
+  desinstalarla y no servía para distribuir. Ahora se publica
+  `com.lagunamedia.app` firmado con la clave de release
+  (`CN=Jonathan Hurtado, O=Laguna Media`).
+- **Etiquetas duplicadas** en la pantalla de descarga: "Qué querés descargar"
+  y "Guardar en" aparecían dos veces, y el destino se repetía debajo de los
+  chips.
+
+### Cambiado
+- El **mismo APK** se publica también en el repositorio
+  [LagunaMedia-Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite):
+  la versión Android ya tiene el alcance de Lite (descargar y convertir, sin
+  reproductor, biblioteca ni temas), así que no hay dos variantes que
+  confundan al usuario.
+
+### Verificado
+- Instalación y descarga real (YouTube) en un Nokia 5.4 con Android 12 y en
+  un Xiaomi 23117RA68G con Android 16 (los dos arm64), incluyendo la
+  validación del link de TikTok.
+- Bibliotecas nativas con páginas de 16 KB y `zipalign -P 16`: compatible con
+  los Android nuevos y con Google Play.
+
+---
+
 ## [3.0.2] — 2026-10-20
 
 ### Corregido (Escritorio, Linux)

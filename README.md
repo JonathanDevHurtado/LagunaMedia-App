@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="../../releases/latest"><img src="https://img.shields.io/badge/⬇%20Descargar-última%20versión-yellow.svg" alt="Descargar la última versión" /></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Historial-3.0.2-informational.svg" alt="Historial de cambios" /></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/Historial-3.0.3-informational.svg" alt="Historial de cambios" /></a>
 </p>
 
 ---
@@ -47,7 +47,7 @@
 - [Preguntas frecuentes](#preguntas-frecuentes)
 - [Privacidad y transparencia](#privacidad-y-transparencia)
 - [Control de calidad](#control-de-calidad)
-- [Cambios de la versión 3.0.2](#cambios-de-la-versión-302)
+- [Cambios de la versión 3.0.3](#cambios-de-la-versión-303)
 - [Licencia](#licencia)
 - [Autor](#autor)
 - [Aviso legal](#aviso-legal)
@@ -100,8 +100,12 @@ Todos los binarios de la última versión están en
 |---|---|---|
 | [`LagunaMedia-x86_64.AppImage`](../../releases/latest/download/LagunaMedia-x86_64.AppImage) | Linux x86_64 | glibc 2.35+ (Fedora 36+, Ubuntu 22.04+, Debian 12+) |
 | [`LagunaMedia-portable-win64.zip`](../../releases/latest/download/LagunaMedia-portable-win64.zip) | Windows 10 / 11 x64 | Ninguno (portable, sin instalador) |
-| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24), cualquier arquitectura | ~250 MB de espacio libre |
+| [`LagunaMedia-Android.apk`](../../releases/latest/download/LagunaMedia-Android.apk) | Android 7.0+ (API 24), cualquier arquitectura | ~212 MB de espacio libre |
 | [`SHA256SUMS.txt`](../../releases/latest/download/SHA256SUMS.txt) | — | Huellas SHA-256 para verificar la descarga |
+
+El APK está **firmado con la clave de release** (no es un build de debug), así
+que las actualizaciones se instalan encima de la versión anterior, y soporta
+páginas de memoria de **16 KB**, el requisito de los Android más nuevos.
 
 **Verificar la descarga** (Linux):
 
@@ -160,8 +164,11 @@ adb install -r LagunaMedia-Android.apk
 **Notas de Android**
 
 - Es un APK **universal**: incluye `arm64-v8a`, `armeabi-v7a`, `x86` y `x86_64`,
-  por eso pesa ~240 MB.
-- Funciona desde **Android 7.0 (API 24)** hasta Android 15/16.
+  por eso pesa ~212 MB.
+- Funciona desde **Android 7.0 (API 24)** hasta Android 16, con páginas de
+  memoria de 16 KB y `targetSdk 35`.
+- Está firmado con una clave de release estable: a partir de la 3.0.3 las
+  actualizaciones se instalan encima sin desinstalar.
 - La app pide permiso de **notificaciones** (Android 13+) para mostrar el
   progreso de las descargas en curso.
 - Las descargas se guardan en **Películas y Música** (galería del sistema) o en
@@ -470,6 +477,26 @@ Ver el [Aviso legal](#aviso-legal). Es tu responsabilidad.
 - **Versionado semántico**: `MAJOR.MINOR.PATCH`, con historial de cambios
   documentado versión por versión.
 - **Sin telemetría ni rastreo**: nada que auditar.
+
+---
+
+## Cambios de la versión 3.0.3
+
+- **Android: el APK publicado ya es un build de release firmado.** Antes era
+  un build de debug (paquete `…app.debug`, firma de debug), lo que impedía
+  actualizar la app sin desinstalarla. Ahora el paquete es
+  `com.lagunamedia.app`, la firma es estable y las actualizaciones se instalan
+  encima.
+- **Compatibilidad con celulares nuevos**: se verificaron las páginas de
+  memoria de 16 KB en todas las bibliotecas nativas y el APK pasa
+  `zipalign -P 16`; probado con descarga real en Android 12 y Android 16
+  (arm64).
+- **Interfaz**: se quitaron los títulos duplicados ("Qué querés descargar",
+  "Guardar en") y la repetición del destino debajo de los chips.
+- **Mismo APK en el repo de Lite**: la versión Android ya tiene el alcance de
+  [Laguna Media Lite](https://github.com/JonathanDevHurtado/LagunaMedia-Lite)
+  (descargar y convertir, sin reproductor, biblioteca ni temas), así que el
+  APK se publica en los dos repositorios en lugar de inventar dos variantes.
 
 ---
 
